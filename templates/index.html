@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Roboto', sans-serif; background-color: #f0f4f8; color: #333;">
+
+    <!-- Эффект дождя: многослойный дождь для большего реализма -->
+    <div class="rain rain-front"></div>
+    <div class="rain rain-back"></div>
+
+    <!-- Эффект снега -->
+    <div class="snow"></div>
+
+    <!-- Блок с анимацией облаков -->
+    <div class="clouds">
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="mt-5" style="color: #2c3e50; font-family: 'Open Sans', sans-serif;">Get Your Weather Forecast and Wardrobe Suggestions</h1>
+
+        <!-- Форма для выбора города и даты -->
+        <form id="flight-form" class="mt-4">
+            <div class="form-group">
+                <label for="destination" style="font-weight: 600; color: #2c3e50;">Destination:</label>
+                <select id="destination" name="destination" class="form-control" required>
+                    <option value="" disabled selected>Select a city</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Brussels">Brussels</option>
+                    <option value="Budapest">Budapest</option>
+                    <option value="Copenhagen">Copenhagen</option>
+                    <option value="Dublin">Dublin</option>
+                    <option value="Helsinki">Helsinki</option>
+                    <option value="Lisbon">Lisbon</option>
+                    <option value="London">London</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Oslo">Oslo</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Prague">Prague</option>
+                    <option value="Vienna">Vienna</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date" style="font-weight: 600; color: #2c3e50;">Date:</label>
+                <input type="text" id="date" name="date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="background-color: #3498db; border-color: #2980b9;">Get Weather</button>
+        </form>
+
+        <!-- Элементы предупреждений о погоде -->
+        <div class="weather-alert alert-rain" style="display: none; color: #0056b3; margin-top: 15px;">⚠️ Дождь ожидается! Подготовьтесь к мокрой погоде.</div>
+        <div class="weather-alert alert-snow" style="display: none; color: #0056b3; margin-top: 15px;">❄️ Ожидается снег! Наденьте что-нибудь теплое.</div>
+        <div class="weather-alert alert-wind" style="display: none; color: #0056b3; margin-top: 15px;">💨 Ветреная погода! Будьте осторожны на улице.</div>
+
+        <!-- Блок для отображения результатов -->
+        <div id="results" class="mt-4"></div>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
